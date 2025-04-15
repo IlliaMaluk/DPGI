@@ -6,12 +6,25 @@
          xmlns:local="clr-namespace:DPGI"
          mc:Ignorable="d"
          Title="TextEditor" Height="300" Width="500">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="LinearPanelBrush">
+            <GradientStop Color="Yellow" Offset="0"></GradientStop>
+            <GradientStop Color="Aqua" Offset="0.5"></GradientStop>
+            <GradientStop Color="Yellow" Offset="0.8"></GradientStop>
+        </LinearGradientBrush>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10">
+        <Border Grid.Row="0" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Background="{StaticResource LinearPanelBrush}">
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <Button Width="50" Height="50">
                     <Image ToolTip="Open" Source="/images/Open.png"/>
@@ -28,7 +41,7 @@
                 </Button>
             </StackPanel>
         </Border>
-        <Border Grid.Row="1" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10">
+        <Border Grid.Row="1" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Background="{StaticResource LinearPanelBrush}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
