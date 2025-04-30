@@ -27,6 +27,13 @@ namespace BaldaGame
         public int PlayerTwoScore { get; private set; }
         public string CurrentPlayer => _isPlayerOne ? "Гравець 1" : "Гравець 2";
 
+        private string _winnerText;
+        public string WinnerText
+        {
+            get => _winnerText;
+            set { _winnerText = value; OnPropertyChanged(nameof(WinnerText)); }
+        }
+
         private string _newLetter;
         public string NewLetter
         {
@@ -98,6 +105,7 @@ namespace BaldaGame
             _isPlayerOne = true;
             _lastLetter = null;
             selectedButton = null;
+            WinnerText = "";
 
             string start = "CAT";
             int mid = Size / 2;
@@ -176,8 +184,26 @@ namespace BaldaGame
 
             TryScoreWord();
 
-            _isPlayerOne = !_isPlayerOne;
-            OnPropertyChanged(nameof(CurrentPlayer));
+            if (IsBoardFull())
+            {
+                string winner = PlayerOneScore > PlayerTwoScore ? "Гравець 1" :
+                                PlayerTwoScore > PlayerOneScore ? "Гравець 2" : "Нічия";
+                WinnerText = $"Гру завершено. {winner} переміг!";
+                MessageBox.Show($"Гру завершено. {winner} переміг!\nРахунок: {PlayerOneScore} : {PlayerTwoScore}");
+            }
+            else
+            {
+                _isPlayerOne = !_isPlayerOne;
+                OnPropertyChanged(nameof(CurrentPlayer));
+            }
+        }
+
+        private bool IsBoardFull()
+        {
+            for (int r = 0; r < Size; r++)
+                for (int c = 0; c < Size; c++)
+                    if (_board[r, c] == '\0') return false;
+            return true;
         }
 
         private void TryScoreWord()
