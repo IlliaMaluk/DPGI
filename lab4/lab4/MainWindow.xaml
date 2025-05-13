@@ -9,10 +9,11 @@
                 <Button Content="Create" Click="Create_Click"/>
                 <Button Content="Update" Click="Update_Click"/>
                 <Button Content="Delete" Click="Delete_Click"/>
+                <Button Content="Очистити" Click="Clear_Click"/>
             </ToolBar>
         </ToolBarTray>
 
-        <Grid DataContext="{Binding ElementName=list, Path=SelectedItem}">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -25,7 +26,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <ListBox x:Name="list" Grid.Row="0" Grid.ColumnSpan="2" DisplayMemberPath="FullName" Height="100"/>
+            <ListBox x:Name="list"
+                 Grid.Row="0" Grid.ColumnSpan="2"
+                 DisplayMemberPath="FullName"
+                 Height="100"
+                 SelectionChanged="List_SelectionChanged"/>
 
             <TextBlock Grid.Row="1" Text="Номер залікової книги:" Margin="5"/>
             <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbNum"/>
