@@ -1,0 +1,43 @@
+﻿<Window x:Class="lab4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Students Viewer" Height="400" Width="600"
+        Loaded="Window_Loaded">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Content="Create" Click="Create_Click"/>
+                <Button Content="Update" Click="Update_Click"/>
+                <Button Content="Delete" Click="Delete_Click"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <Grid DataContext="{Binding ElementName=list, Path=SelectedItem}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <ListBox x:Name="list" Grid.Row="0" Grid.ColumnSpan="2" DisplayMemberPath="FullName" Height="100"/>
+
+            <TextBlock Grid.Row="1" Text="Номер залікової книги:" Margin="5"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbNum"/>
+
+            <TextBlock Grid.Row="2" Text="ПІБ:" Margin="5"/>
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbName"/>
+
+            <TextBlock Grid.Row="3" Text="Група:" Margin="5"/>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbGroup"/>
+
+            <TextBlock Grid.Row="4" Text="Адреса:" Margin="5"/>
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="tbAddress"/>
+        </Grid>
+    </DockPanel>
+</Window>

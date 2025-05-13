@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lab4", "lab4\lab4.csproj", "{CEF7ED0B-1723-4938-BCF7-4AEDED4B2600}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{60A084E1-A24A-494D-B80B-41B9D15E42F6}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\..\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\MyDB.mdf = ..\..\..\..\..\..\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\MyDB.mdf
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEF7ED0B-1723-4938-BCF7-4AEDED4B2600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEF7ED0B-1723-4938-BCF7-4AEDED4B2600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEF7ED0B-1723-4938-BCF7-4AEDED4B2600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEF7ED0B-1723-4938-BCF7-4AEDED4B2600}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C306F2B8-72BC-45DE-A9E2-79FC5CD877FF}
+	EndGlobalSection
+EndGlobal
