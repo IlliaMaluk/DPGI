@@ -1,0 +1,30 @@
+﻿<Window x:Class="BaldaGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Гра «Балда»" Height="600" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <UniformGrid x:Name="BoardGrid" Rows="5" Columns="5" Grid.Column="0" Margin="10"/>
+
+        <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock Text="Хід: " FontSize="16"/>
+            <TextBlock Text="{Binding CurrentPlayer}" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Нова літера:"/>
+            <TextBox Text="{Binding NewLetter, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="0,5" MaxLength="1"/>
+            <Button Content="Помістити літеру" Command="{Binding PlaceLetterCommand}" Width="150" Margin="0,5"/>
+
+
+            <TextBlock Text="Рахунок:" FontSize="16" Margin="0,15,0,5"/>
+            <TextBlock Text="{Binding PlayerOneScore, StringFormat=Гравець 1: {0}}" FontSize="14"/>
+            <TextBlock Text="{Binding PlayerTwoScore, StringFormat=Гравець 2: {0}}" FontSize="14"/>
+            <Button Content="Скинути гру" Command="{Binding ResetGameCommand}" Width="150" Margin="0,10"/>
+
+            <TextBlock Text="{Binding WinnerText}" FontSize="16" FontWeight="Bold" Margin="0,20,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
