@@ -26,5 +26,6 @@ namespace lab6
         }
     
         public virtual DbSet<Words> Words { get; set; }
+        public virtual DbSet<GameHistory> GameHistory { get; set; }
     }
 }

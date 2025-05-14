@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9f5b315805e64268beec711600526a2c" Name="Diagram1">
         <EntityTypeShape EntityType="WordsModel.Words" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WordsModel.GameHistory" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -53,6 +52,7 @@ namespace BaldaGame
             DataContext = this;
 
             LoadDictionaryFromDatabase();
+            LoadHistory();
 
             PlaceLetterCommand = new RelayCommand(_ => PlaceLetter());
             ResetGameCommand = new RelayCommand(_ => StartNewGame());
@@ -80,6 +80,46 @@ namespace BaldaGame
             }
         }
 
+        private void LoadHistory()
+        {
+            try
+            {
+                using (var context = new WordsEntities())
+                {
+                    var historyList = context.GameHistory
+                        .OrderByDescending(g => g.PlayedAt)
+                        .ToList();
+                    HistoryGrid.ItemsSource = historyList;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка при завантаженні історії: " + ex.Message);
+            }
+        }
+
+        private void SaveGameToHistory(int score1, int score2, string winner)
+        {
+            try
+            {
+                using (var context = new WordsEntities())
+                {
+                    var history = new GameHistory
+                    {
+                        PlayerOneScore = score1,
+                        PlayerTwoScore = score2,
+                        Winner = winner,
+                        PlayedAt = DateTime.Now
+                    };
+                    context.GameHistory.Add(history);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка при збереженні історії: " + ex.Message);
+            }
+        }
 
         private void BuildBoard()
         {
@@ -186,8 +226,12 @@ namespace BaldaGame
             {
                 string winner = PlayerOneScore > PlayerTwoScore ? "Гравець 1" :
                                 PlayerTwoScore > PlayerOneScore ? "Гравець 2" : "Нічия";
+
                 WinnerText = $"Гру завершено. {winner} переміг!";
                 MessageBox.Show($"Гру завершено. {winner} переміг!\nРахунок: {PlayerOneScore} : {PlayerTwoScore}");
+
+                SaveGameToHistory(PlayerOneScore, PlayerTwoScore, winner);
+                LoadHistory();
             }
             else
             {
