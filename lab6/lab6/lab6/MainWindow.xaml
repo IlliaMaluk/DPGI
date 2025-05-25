@@ -10,9 +10,9 @@
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-
-                <UniformGrid x:Name="BoardGrid" Rows="5" Columns="5" Grid.Column="0" Margin="10"/>
-
+                <Expander Header="Поле гри" IsExpanded="True" Grid.Column="0" Margin="10">
+                    <UniformGrid x:Name="BoardGrid" Rows="5" Columns="5" Grid.Column="0" Margin="10"/>
+                </Expander>
                 <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <TextBlock Text="Хід: " FontSize="16"/>
                     <TextBlock Text="{Binding CurrentPlayer}" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
