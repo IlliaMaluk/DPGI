@@ -1,0 +1,42 @@
+﻿<Page x:Class="BaldaGame.Views.PageHistory"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:cmd="clr-namespace:BaldaGame.Commands"
+      Title="Історія ігор">
+    <DockPanel>
+
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Дія">
+                <MenuItem Header="Пошук"     Command="cmd:DataCommands.Find" />
+                <Separator/>
+                <MenuItem Header="Редагувати" Command="cmd:DataCommands.Replace" />
+                <MenuItem Header="Видалити"   Command="cmd:DataCommands.Delete" />
+            </MenuItem>
+        </Menu>
+
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="cmd:DataCommands.Find" ToolTip="Пошук">
+                <Image Source="/Images/Find.png" Width="16" Height="16"/>
+            </Button>
+            <Button Command="cmd:DataCommands.Replace" ToolTip="Редагувати">
+                <Image Source="/Images/Edit.png" Width="16" Height="16"/>
+            </Button>
+            <Button Command="cmd:DataCommands.Delete" ToolTip="Видалити">
+                <Image Source="/Images/Delete.png" Width="16" Height="16"/>
+            </Button>
+        </ToolBar>
+
+        <DataGrid x:Name="HistoryGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата"         Binding="{Binding PlayedAt}"      Width="*"/>
+                <DataGridTextColumn Header="Гравець 1"   Binding="{Binding PlayerOneScore}" Width="*"/>
+                <DataGridTextColumn Header="Гравець 2"   Binding="{Binding PlayerTwoScore}" Width="*"/>
+                <DataGridTextColumn Header="Переможець"   Binding="{Binding Winner}"        Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </DockPanel>
+</Page>
