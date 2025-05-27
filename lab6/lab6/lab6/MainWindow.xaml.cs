@@ -11,7 +11,6 @@ namespace BaldaGame
             InitializeComponent();
         }
 
-        // Викликається з PageMain.xaml → Hyperlink_RequestNavigate
         public void NavigateTo(string relativeUri)
         {
             MainFrame?.Navigate(new Uri(relativeUri, UriKind.Relative));
